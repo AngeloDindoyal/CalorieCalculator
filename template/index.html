@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Calorie Calculator">
+        <meta name="keywords" content="Calorie, Calculator, TDEE">
+        <meta name="author" content="Angelo Dindoyal">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calorie Calculator</title>
+        <link rel="stylesheet" href="\Users\dindo\OneDrive\Career\CS Projects\Calorie_Calculator\static\style.css">
+    </head>
+    <body>
+        <div class="input_container">
+            <div>
+                <h1>Calorie Calculator</h1>
+                <p>Learn the number of calories you expend each day!</p>
+            </div>
+            <div class="form">
+                <form>
+                    <table>
+                        <tr>
+                            <td class="col1">Gender</td>
+                            <td>
+                                <label for="male">Male</label>
+                                <input type="radio" name="gender" id="male" value="1" >
+                                <label for="female">Female</label>
+                                <input type="radio" name="gender" id="female" value="2">
+                            </td>   
+                        </tr>
+                        <tr>
+                            <td class="col1">Age</td>
+                            <td><input type="number" min="0" id="age" class="textInput" placeholder="Ex: 19"></td>   
+                        </tr>
+                        <tr>
+                            <td class="col1">Weight</td>
+                            <td>
+                                <input type="number" min="0" id="weight" class="textInput" placeholder="Ex: 200">
+                                <label for="pounds">lb</label>
+                                <input type="radio" id="pounds" name="unit" value="1">
+                                <label for="kg">kg</label>
+                                <input type="radio" id="kg" name="unit" value="2">
+                            </td>   
+                        </tr>
+                        <tr>
+                            <td class="col1">Height</td>
+                            <td>
+                                <input type="number" min="0" id="height" class="textInput" placeholder="Ex: 72">
+                                <label for="cm">cm</label>
+                                <input type="radio" name="heightU" id="cm" value="1" >
+                                <label for="in">in</label>
+                                <input type="radio" name="heightU" id="in" value="2">
+                            </td>   
+                        </tr>
+                        <tr>
+                            <td class="col1">Activity Level</td>
+                            <td>
+                                <select id="activity" class="textInput">
+                                    <option value="">Choose an activity level...</option>
+                                    <option value="0">Level 1: little to no exercise</option>
+                                    <option value="1">Level 2: 1 to 3 days of exercise</option>
+                                    <option value="2">Level 3: 3 to 5 days of exercise</option>
+                                    <option value="3">Level 4: 6 to 7 days of light exercise</option>
+                                    <option value="4">Level 5: 5 to 7 days of intense exercise</option>
+                                </select>
+                            </td>   
+                        </tr>
+                        <tr>
+                            <td class="col1">Body Fat % (optional)</td>
+                            <td><input type="number" id="bf" class="textInput" min="0" placeholder="Ex: 20"></td>   
+                        </tr>
+                        <tr>
+                            <td class="col1"></td>
+                            <td id="calRow"> <button id="cal">Calculate</button></td>
+                        </tr>
+                    </table>
+                    
+                </form>
+                <p id="info">This calculator determines the amount of calories that you have to consume to maintain your currrent weight. For the activity level, exercise/light exercise is considered as 15-30 minutes of elevated heart rate activity, and intense exercise is considered as 45-120 minutes of elevated heart rate activity. The accuracy of the equations used have been proven; however, there are still other factors that affect total daily expenditure that are not considered. Use the results of this calculator as a general idea of your own daily energy expenditure to find the exact number.</p>
+            </div>
+        </div>
+
+        <p id="info2">This calculator determines the amount of calories that you have to consume to maintain your currrent weight. For the activity level, exercise/light exercise is considered as 15-30 minutes of elevated heart rate activity, and intense exercise is considered as 45-120 minutes of elevated heart rate activity. The accuracy of the equations used have been proven; however, there are still other factors that affect total daily expenditure that are not considered. Use the results of this calculator as a general idea of your own daily energy expenditure to find the exact number.</p>
+        
+        <h2 id="er" class="error">Please provide an answer for all inputs.</h2>
+
+        <div id="results">
+            <h2 id="result">Your total daily calorie expenditure is:</h2>
+            <p id="valid">This number was calculated with a formula derived by Ten Maaf(2014) <sup><a href="index.html#ref1">1</a></sup>. A study conducted by Molina-Luque et al(2021) proves the reliability and validity of this equation.<sup><a href="index.html#ref2">2</a></sup> </p>
+            <p id="activityLev">If you were to change your activity level, your calorie expenditure would adjust as shown: </p>
+            <table id="activeTab">
+                <tr>
+                    <th>Activity Level</th>
+                    <th>Calories</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td id="lev1"></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td id="lev2"></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td id="lev3"></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td id="lev4"></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td id="lev5"></td>
+                </tr>
+            </table>
+            <p id="loss">To lose weight with your current activity level, the number of calories you should consume is:</p>
+            <table id="lossTab">
+                <tr>
+                    <th>Weight Loss Level</th>
+                    <th>Calories</th>
+                </tr>
+                <tr>
+                    <td>Low (0.2 lbs - 0.5 lbs per week)</td>
+                    <td id="loss1"></td>
+                </tr>
+                <tr>
+                    <td>Moderate (0.5 lbs - 1 lbs per week)</td>
+                    <td id="loss2"></td>
+                </tr>
+                <tr>
+                    <td>Extreme (1 lbs - 2 lbs per week)</td> 
+                    <td id="loss3"></td>
+                </tr>
+            </table>
+            <p id="gain">To gain weight with your current activity level, the number of calories you should consume is: </p>
+            <table id="gainTab">
+                <tr>
+                    <th>Weight Gain Level</th>
+                    <th>Calories</th>
+                </tr>
+                <tr>
+                    <td>Low (0.2 lbs - 0.5 lbs per week)</td>
+                    <td id="gain1"></td>
+                </tr>
+                <tr>
+                    <td>Moderate (0.5 lbs - 1 lbs per week)</td>
+                    <td id="gain2"></td>
+                </tr>
+                <tr>
+                    <td>Extreme (1 lbs - 2 lbs per week)</td> 
+                    <td id="gain3"></td>
+                </tr>
+            </table>
+            <h2>References</h2>
+            <p id="ref1"><sup>1</sup>O’Neill, J.E.R., Corish, C.A. & Horner, K. Accuracy of Resting Metabolic Rate Prediction Equations in Athletes: A Systematic Review with Meta-analysis. Sports Med 53, 2373–2398 (2023). https://doi.org/10.1007/s40279-023-01896-z</p>
+            <p id="ref2"><sup>2</sup>Molina-Luque R, Carrasco-Marín F, Márquez-Urrizola C, Ulloa N, Romero-Saldaña M, Molina-Recio G. Accuracy of the Resting Energy Expenditure Estimation Equations for Healthy Women. Nutrients. 2021 Jan 24;13(2):345. doi: 10.3390/nu13020345. PMID: 33498930; PMCID: PMC7912292.</p>
+        </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="\Users\dindo\OneDrive\Career\CS Projects\Calorie_Calculator\static\script.js"></script>
+    </body>
+</html>
